@@ -9,8 +9,8 @@ module PodfileGenerator
 			raise "podfile path is required" unless podfile_path
 			raise "podfile template path is required" unless podfile_template_path
 
-			@podfile_path = podfile_path
-			@podfile_template_path = podfile_template_path
+			@podfile_path = podfile_path.is_a?(Pathname) ? podfile_path.to_s : podfile_path
+			@podfile_template_path = podfile_template_path.is_a?(Pathname) ? podfile_template_path.to_s : podfile_template_path
 			@label = label || DEFAULT_LABEL
 		end
 
